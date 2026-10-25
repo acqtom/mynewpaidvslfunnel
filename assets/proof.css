@@ -1,0 +1,118 @@
+/* ---------- Results carousel ---------- */
+.proof-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.proof-track::-webkit-scrollbar { display: none; }
+
+.proof-card {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+.proof-card button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.proof-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--card-2);
+}
+.proof-caption {
+  padding: 16px 20px 18px;
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.proof-caption b { color: #fff; }
+
+/* Shown when a slide's photo is missing */
+.proof-placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(135deg, var(--card-2) 0 14px, rgba(255, 255, 255, 0.03) 14px 28px);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-bar {
+  position: relative;
+  height: 4px;
+  margin-top: 20px;
+  border-radius: 4px;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+.proof-bar i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--blue);
+  transition: left 0.25s ease, width 0.25s ease;
+}
+
+.proof-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.proof-count {
+  margin-right: auto;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.proof-arrow {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.proof-arrow:hover:not(:disabled) { background: var(--blue); border-color: var(--blue); }
+.proof-arrow:disabled { opacity: 0.35; cursor: default; }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(5, 7, 12, 0.88);
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  max-width: min(1000px, 100%);
+  max-height: calc(100vh - 32px);
+  border-radius: 12px;
+}
